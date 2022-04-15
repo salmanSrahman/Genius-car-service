@@ -20,6 +20,7 @@ const Header = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
+              
               <CustomLink to="/home">Home</CustomLink>
               <CustomLink to="/about">About us</CustomLink>
               <CustomLink to="/shop"> Shop</CustomLink>
