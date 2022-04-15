@@ -1,9 +1,11 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./Service.css";
 
 const Service = ({ service }) => {
-  const { img, name, price } = service;
+  const { img, name, price, id } = service;
+  const navigate = useNavigate();
   return (
     <Col>
       <Card>
@@ -12,6 +14,9 @@ const Service = ({ service }) => {
           <div className="p-2">
             <h4>{name}</h4>
             <h4>${price}</h4>
+            <Button onClick={() => navigate(`/service/${id}`)}>
+              See Details
+            </Button>
           </div>
         </div>
       </Card>
