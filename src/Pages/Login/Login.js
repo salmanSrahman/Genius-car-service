@@ -17,6 +17,7 @@ const Login = () => {
   return (
     <Container>
       <div className="w-50 mx-auto">
+        <h3>Please Login</h3>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -44,7 +45,7 @@ const Login = () => {
             Submit
           </Button>
           <p>
-            New To Genius Car?{" "}
+            New To Genius Car?
             <span className="text-danger" onClick={() => navigate("/register")}>
               Please Register
             </span>

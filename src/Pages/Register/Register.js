@@ -1,34 +1,53 @@
 import React from "react";
-import "./Login.css";
-import Form from "react-bootstrap/Form";
-import { Button, Container } from "react-bootstrap";
+import "./Register.css";
+import { Container } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../Firebase.config";
 
-const Login = () => {
+const Register = () => {
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
+  const navigate = useNavigate();
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    createUserWithEmailAndPassword(email, password);
+    console.log(email);
+  };
   return (
-    <Container>
-      <div className="w-50 mx-auto">
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </div>
-    </Container>
+    <div>
+      <Container>
+        <div className="w-50 mx-auto">
+          <h3>Please Register</h3>
+          <div className="register-form">
+            <form onSubmit={handleRegister}>
+              <input type="text" name="name" />
+              <br />
+              <input type="email" name="email" />
+              <br />
+              <input type="password" name="password" />
+              <br />
+              <input type="submit" value="Register" />
+              <p>
+                Already Registered?
+                <Link
+                  className="text-danger pe-auto ms-1"
+                  to="/login"
+                  onClick={() => navigate("/login")}
+                >
+                  Please Login
+                </Link>
+              </p>
+            </form>
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 };
 
-export default Login;
+export default Register;

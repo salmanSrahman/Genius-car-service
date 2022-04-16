@@ -8,6 +8,7 @@ import ServiceDetails from "./Pages/Home/ServiceDetails/ServiceDetails";
 import Contact from "./Pages/Contact/Contact";
 import ContactMessage from "./Pages/Contact/ContactMessage/ContactMessage";
 import Login from "./Pages/Login/Login";
+import Register from './Pages/Register/Register'
 import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           element={<ServiceDetails />}
         ></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register/>}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/contactMessage" element={<ContactMessage />}></Route>
         <Route path="*" element={<NotFound />}></Route>
